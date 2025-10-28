@@ -352,16 +352,16 @@ var demographics_debriefing = {
     data: {
         screen: "demographics_debrief",
     },
-    on_finish: function (data) {
-        let score = check_attentionchecks()
-        if (score >= 0.75) {
-            data["AttentionChecks"] = "Pass"
-            data["AttentionScore"] = score
-        } else {
-            data["AttentionChecks"] = "Fail"
-            data["AttentionScore"] = score
-        }
-    },
+    // on_finish: function (data) {
+    //     let score = check_attentionchecks()
+    //     if (score >= 0.75) {
+    //         data["AttentionChecks"] = "Pass"
+    //         data["AttentionScore"] = score
+    //     } else {
+    //         data["AttentionChecks"] = "Fail"
+    //         data["AttentionScore"] = score
+    //     }
+    // },
 }
 
 var demographics_endscreen = {
@@ -370,13 +370,13 @@ var demographics_endscreen = {
         text = "<h2 style='color:green;'>Data saved successfully!</h2>" + "<p>Thank you for participating, it means a lot to us.</p>"
 
         // Snowball
-        text +=
-            "<p>Don't hesitate to share the study by sending this link <i>(but please don't reveal the details of the experiment)</i>:</p>" +
-            "<p><a href='" +
-            "https://github.com/EmmaLBenn/InteroceptionAI/blob/main/experiment/index.html" +
-            "'>" +
-            "https://github.com/EmmaLBenn/InteroceptionAI/blob/main/experiment/index.html" +
-            "<a/></p>"
+        // text +=
+        //     "<p>Don't hesitate to share the study by sending this link <i>(but please don't reveal the details of the experiment)</i>:</p>" +
+        //     "<p><a href='" +
+        //     "..." +
+        //     "'>" +
+        //     "..." +
+        //     "<a/></p>"
 
         // Return survey
         return {
