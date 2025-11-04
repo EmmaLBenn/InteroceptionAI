@@ -8,16 +8,9 @@ const items_djg = {
     DJG_Social_6_R: "There are enough people I feel close to"
 }
 
-const instructions_djg = {
-    type: "html",
-    name: "instructions_djg",
-    html:
-        "<p> Please indicate for each of the statements, the extent to which they apply to your situation, the way you feel now. </p>",
-}
-
 function make_djg(items, required = true) {
     items = shuffleObject(items)
-    questions = [instructions_djg]
+    questions = []
 
     // Make questions
     for (const key of Object.keys(items)) {
@@ -53,6 +46,8 @@ const questionnaire_loneliness = {
     survey_json: function () {
         return {
             title: "About how you feel",
+            description:
+                "Please indicate for each of the statements, the extent to which they apply to your situation, the way you feel now.",
             showQuestionNumbers: false,
             goNextPageAutomatic: true,
             pages: make_djg(items_djg),
