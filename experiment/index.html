@@ -46,20 +46,23 @@
         // full screen
         timeline.push(ConsentForm)
 
-        // Start -------------------------------------------------------------------
+        // Start
         timeline.push(demographics_browser_info)
         timeline.push(demographic_questions)
-        
+
+        // Questionnaires - before task
+        timeline.push(questionnaire_loneliness)
+        timeline.push(questionnaire_somatichealth)
+        timeline.push(questionnaire_mentalhealth)
 
         //Experiment
 
-        // Questionnaires
-        timeline.push(questionnaires_instructions)
-        timeline.push(questionnaires_mint)
-        timeline.push(questionnaires_somatichealth)
-        timeline.push(questionnaires_mentalhealth)
+        // Questionnaires - after task
+        timeline.push(questionnaire_instructions)
+        timeline.push(questionnaire_mint)
+        
 
-        // End
+        // // End
         timeline.push(experiment_feedback)
         timeline.push(demographics_debriefing)
 

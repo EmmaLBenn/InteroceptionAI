@@ -1,5 +1,70 @@
+// Loneliness - DJG-6 ================================================
+const items_djg = {
+    DJG_Emotional_1: "I experience a general sense of emptiness",
+    DJG_Emotional_2: "I miss having people around me",
+    DJG_Emotional_3: "I often feel rejected",
+    DJG_Social_4_R: "There are plenty of people I can rely on when I have problems",
+    DJG_Social_5_R: "There are many people I can trust completely",
+    DJG_Social_6_R: "There are enough people I feel close to"
+}
+
+const instructions_djg = {
+    type: "html",
+    name: "instructions_djg",
+    html:
+        "<p> Please indicate for each of the statements, the extent to which they apply to your situation, the way you feel now. </p>",
+}
+
+function make_djg(items, required = true) {
+    items = shuffleObject(items)
+    questions = [instructions_djg]
+
+    // Make questions
+    for (const key of Object.keys(items)) {
+        q = {
+            title: items[key],
+            name: key,
+            type: "rating",
+            displayMode: "buttons",
+            isRequired: required,
+            rateValues: [
+                {
+                    value: 0,
+                    text: "No",
+                },
+                {
+                    value: 1,
+                    text: "More or less",
+                },
+                {
+                    value: 2,
+                    text: "Yes",
+                },
+            ],
+        }
+        questions.push(q)
+    }
+
+    return { elements: questions }
+}
+
+const questionnaire_loneliness = {
+    type: jsPsychSurvey,
+    survey_json: function () {
+        return {
+            title: "About how you feel",
+            showQuestionNumbers: false,
+            goNextPageAutomatic: true,
+            pages: make_djg(items_djg),
+        }
+    },
+    data: {
+        screen: "questionnaire_loneliness",
+    },
+}
+
 // Psychiatric Disorders ================================================
-const questionnaires_mentalhealth = {
+const questionnaire_mentalhealth = {
     type: jsPsychSurvey,
     survey_json: {
         title: "Mental health",
@@ -79,12 +144,12 @@ const questionnaires_mentalhealth = {
         ],
     },
     data: {
-        screen: "questionnaires_mentalhealth",
+        screen: "questionnaire_mentalhealth",
     },
 }
 
 // Psychosomatic disorders ===================================================
-const questionnaires_somatichealth = {
+const questionnaire_somatichealth = {
     type: jsPsychSurvey,
     survey_json: {
         title: "Medical and somatic difficulties",
@@ -224,6 +289,6 @@ const questionnaires_somatichealth = {
         ],
     },
     data: {
-        screen: "questionnaires_somatichealth",
+        screen: "questionnaire_somatichealth",
     },
 }

@@ -1,4 +1,4 @@
-const questionnaires_instructions = {
+const questionnaire_instructions = {
     type: jsPsychSurvey,
     survey_json: {
         showQuestionNumbers: false,
@@ -167,7 +167,7 @@ function make_mint(items, required = true, ticks = ["Disagree", "Agree"]) {
 }
 
 // Questionnaire ================================================
-const questionnaires_mint = {
+const questionnaire_mint = {
     type: jsPsychSurvey,
     survey_json: function () {
         return {
@@ -180,6 +180,6 @@ const questionnaires_mint = {
         }
     },
     data: {
-        screen: "questionnaires_mint",
+        screen: "questionnaire_mint",
     },
 }
