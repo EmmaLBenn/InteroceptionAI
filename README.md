@@ -1,2 +1,2 @@
-## InteroceptionAI
+## FakeChat
 Dissertation project
