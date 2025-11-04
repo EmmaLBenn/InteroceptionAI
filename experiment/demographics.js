@@ -114,61 +114,6 @@ var demographic_questions = {
             {
                 elements: [
                     {
-                        type: "boolean",
-                        title: "What measurement do you use for height?",
-                        name: "Height_Measurement",
-                        labelTrue: "Feet",
-                        labelFalse: "Centimetres",
-                        isRequired: false,
-                    },
-                    {
-                        visibleIf: "{Height_Measurement} == true",
-                        type: "text",
-                        title: "What is your height (in feet)",
-                        name: "Height_ft",
-                        isRequired: false,
-                        placeholder: "e.g., 5'6",
-                    },
-                    {
-                        visibleIf: "{Height_Measurement} == false",
-                        type: "text",
-                        title: "What is your height (in centimetres)",
-                        name: "Height_cm",
-                        isRequired: false,
-                        inputType: "number",
-                        placeholder: "e.g., 167",
-                    },
-                    {
-                        type: "boolean",
-                        title: "What measurement do you use for weight?",
-                        name: "Weight_Measurement",
-                        labelTrue: "Stones",
-                        labelFalse: "Kilograms",
-                        isRequired: false,
-                    },
-                    {
-                        visibleIf: "{Weight_Measurement} == true",
-                        type: "text",
-                        title: "What is your weight (in stones)",
-                        name: "Weight_st",
-                        isRequired: false,
-                        placeholder: "e.g., 13.04",
-                    },
-                    {
-                        visibleIf: "{Weight_Measurement} == false",
-                        type: "text",
-                        title: "What is your weight (in kilograms)",
-                        name: "Weight_kg",
-                        isRequired: false,
-                        inputType: "number",
-                        placeholder: "e.g., 84",
-                    },
-                ],
-            },
-
-            {
-                elements: [
-                    {
                         title: "What is your highest completed education level?",
                         name: "Education",
                         type: "radiogroup",
@@ -255,16 +200,6 @@ var demographic_questions = {
                         otherPlaceholder: "Please specify",
                         isRequired: false,
                         colCount: 1,
-                    },
-                    {
-                        title: "In which country are you currently living?",
-                        name: "Country",
-                        type: "dropdown",
-                        choicesByUrl: {
-                            url: "https://surveyjs.io/api/CountriesExample",
-                        },
-                        placeholder: "e.g., France",
-                        isRequired: false,
                     },
                 ],
             },
