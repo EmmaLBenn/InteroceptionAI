@@ -187,6 +187,7 @@ const items_bait = {
     BAIT_10_NegativeAttitutes: "I am worried about future uses of AI",
     BAIT_11_PositiveAttitutes: "AI is exciting",
     BAIT_12_PositiveAttitutes: "Much of society will benefit from a future full of AI",
+    // add attention check from FakeArt
 }
 
 function make_bait(items, required = true, ticks = ["Disagree", "Agree"]) {
