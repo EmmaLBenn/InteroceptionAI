@@ -172,7 +172,7 @@ const questionnaire_mint = {
 }
 
 
-// BAIT Items ================================================
+// BAIT ================================================
 
 const items_bait = {
     BAIT_1_ImagesRealistic: "Current AI algorithms can generate very realistic images",
@@ -213,7 +213,6 @@ function make_bait(items, required = true, ticks = ["Disagree", "Agree"]) {
     return { elements: questions }
 }
 
-// BAIT Questionnaire ================================================
 const questionnaire_bait = {
     type: jsPsychSurvey,
     survey_json: function () {
@@ -228,5 +227,79 @@ const questionnaire_bait = {
     },
     data: {
         screen: "questionnaire_bait",
+    },
+}
+
+
+// PHQ-4 ================================================
+
+const items_phq4 = {
+    PHQ4_Anxiety_1: "Feeling nervous, anxious or on edge",
+    PHQ4_Anxiety_2: "Not being able to stop or control worrying",
+    PHQ4_Depression_3: "Feeling down, depressed, or hopeless",
+    PHQ4_Depression_4: "Little interest or pleasure in doing things",
+}
+
+const instructions_phq4 = {
+    type: "html",
+    name: "instructions_phq4",
+    html: "<p>Over the <b>last 2 weeks</b>, how often have you been bothered by the following problems?</p>",
+}
+
+function make_phq4(items, required = true) {
+    items = shuffleObject(items)
+    questions = []
+
+    // Make questions
+    for (const key of Object.keys(items)) {
+        q = {
+            title: items[key],
+            name: key,
+            type: "rating",
+            displayMode: "buttons",
+            isRequired: required,
+            rateValues: [
+                {
+                    value: 0,
+                    text: "Not at all",
+                },
+                {
+                    value: 0.5,
+                    text: "Once or twice",
+                },
+                {
+                    value: 1,
+                    text: "Several days",
+                },
+                {
+                    value: 2,
+                    text: "More than half the days",
+                },
+                {
+                    value: 3,
+                    text: "Nearly every day",
+                },
+            ],
+        }
+        questions.push(q)
+    }
+
+    return { elements: questions }
+}
+
+const questionnaire_phq4 = {
+    type: jsPsychSurvey,
+    survey_json: function () {
+        return {
+            title: "About your mood",
+            description:
+                "<p>Over the <b>last 2 weeks</b>, how often have you been bothered by the following problems?</p>",
+            showQuestionNumbers: false,
+            goNextPageAutomatic: true,
+            pages: make_phq4(items_phq4),
+        }
+    },
+    data: {
+        screen: "questionnaire_phq4",
     },
 }

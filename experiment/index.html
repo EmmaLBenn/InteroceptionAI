@@ -46,22 +46,34 @@
         // full screen
         timeline.push(ConsentForm)
 
-        // Start
+        // Shuffle -----------------------------------------------------------------
+        qs_beforetask = jsPsych.randomization.shuffleNoRepeats([
+            questionnaire_loneliness,
+            questionnaire_somatichealth,
+            questionnaire_mentalhealth,
+        ])
+        qs_aftertask = jsPsych.randomization.shuffleNoRepeats([
+            questionnaire_mint,
+            questionnaire_bait,
+            questionnaire_phq4,
+        ])
+
+        // Start -----------------------------------------------------------------
         timeline.push(demographics_browser_info)
         timeline.push(demographic_questions)
 
         // Questionnaires - before task
-        timeline.push(questionnaire_loneliness)
-        timeline.push(questionnaire_somatichealth)
-        timeline.push(questionnaire_mentalhealth)
+        timeline.push(qs_beforetask[0])
+        timeline.push(qs_beforetask[1])
+        timeline.push(qs_beforetask[2])
 
-        //Experiment
+        // Task
 
         // Questionnaires - after task
         timeline.push(questionnaire_instructions)
-        timeline.push(questionnaire_mint)
-        timeline.push(questionnaire_bait)
-        
+        timeline.push(qs_aftertask[0])
+        timeline.push(qs_aftertask[1])
+        timeline.push(qs_aftertask[2])        
 
         // // End
         timeline.push(experiment_feedback)
