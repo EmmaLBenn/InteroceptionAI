@@ -304,3 +304,66 @@ const questionnaire_phq4 = {
         screen: "questionnaire_phq4",
     },
 }
+
+// IRI ================================================
+
+const items_IRI = {
+    IRI_Cogntive_1: "I try to look at everybody's side of a disagreement before I make a decision.",
+    IRI_Cogntive_2: "I sometimes try to understand my friends better by imagining how things look from their perspective.",
+    IRI_Cogntive_3: "I believe that there are two sides to every question and try to look at them both.",
+    IRI_Cognitive_4: "I sometimes find it difficult to see things from the 'other guy's' point of view.",
+    IRI_Cognitive_5: "I try to look at things from the other person's point of view before making up my mind.",
+    IRI_Cognitive_6: "When I'm upset at someone, I usually try to 'put myself in his shoes' for a while.",
+    IRI_Cognitive_7: "Before criticising somebody, I try to imagine how I would feel if I were in their place.",
+    IRI_Affective_1: "I often have tender, concerned feelings for people less fortunate than me.",
+    IRI_Affective_2: "Sometimes I don't feel very sorry for other people when they are having problems.", 
+    IRI_Affective_3: "When I see someone being taken advantage of, I feel kind of protective toward them.",
+    IRI_Affective_4: "Other people's misfortunes do not usually disturb me a great deal.",
+    IRI_Affective_5: "I am often quite touched by things that I see happen.",
+    IRI_Affective_6: "I would describe myself as a pretty soft-hearted person.",
+    IRI_Affective_7: "When I see someone being treated unfairly, I sometimes don't feel very much pity for them.",
+}
+
+function make_IRI(items, required = true, ticks = ["Describes me well", "Does not describe me well"]) {
+    items = shuffleObject(items)
+
+    questions = []
+
+    // Make questions
+    for (const key of Object.keys(items)) {
+        q = {
+            title: items[key],
+            name: key,
+            type: "rating",
+            displayMode: "buttons",
+            // scaleColorMode: "colored",
+            isRequired: required,
+            minRateDescription: ticks[0],
+            maxRateDescription: ticks[1],
+            rateValues: [0, 1, 2, 3, 4, 5],
+        }
+        questions.push(q)
+    }
+
+    return { elements: questions }
+}
+
+const questionnaire_IRI = {
+    type: jsPsychSurvey,
+    survey_json: function () {
+        return {
+            title: "About your feelings",
+            description:
+                "We are interested in your thoughts and feelings. Please read the statements below carefully and indicate the extent each statement describe you.",
+            showQuestionNumbers: false,
+            goNextPageAutomatic: true,
+            pages: make_bait(items_bait),
+        }
+    },
+    data: {
+        screen: "questionnaire_IRI",
+    },
+}
+
+
+
